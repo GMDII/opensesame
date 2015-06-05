@@ -283,7 +283,13 @@ void rftx()
 	LED_GREEN = HIGH; // turn green led off
 	LED_RED = LOW; // turn red led on
 
-	// ...
+	RFST = RFST_STX;
+	
+	while (!txdone);
+
+ 	RFST = RFST_SIDLE;
+	sleepMillis(500);
+	txdone = 0;
 }
 
 // show nyancat while transmitting
