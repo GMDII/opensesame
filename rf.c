@@ -222,7 +222,7 @@ void db_send()
 		PA_TABLE1 = 0xC0;
 
 	// set frequency
-	setFreq(g.hz, &FREQ2, &FREQ1, &FREQ0);
+	setFreq(&FREQ2, &FREQ1, &FREQ0);
 	CHANNR = 0x00;
 
 	// maximum channel bandwidth
