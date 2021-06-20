@@ -239,7 +239,7 @@ int main(void)
 		// start de bruijn sending
 		for (key = 0; key < sizeof(garages); key++)
 		{
-			_garage_id = key;
+			_garage_id = key; // what is the point of this ? not used anywhere else.
 			db_send();
 		}
 
@@ -277,13 +277,15 @@ void rf_isr_orig() __interrupt (RF_VECTOR)
 void rftx()
 {
 	// wait for previous transmission to finish (if any)
-	waitForTx();
+	//waitForTx(); Moved this line number 288 otherwise it stops transmitting (commented out the others in rf.c also)
 
 	txdone = 0;
 	LED_GREEN = HIGH; // turn green led off
 	LED_RED = LOW; // turn red led on
 
 	RFST = RFST_STX;
+	
+	waitForTx();
 	
 	while (!txdone);
 
