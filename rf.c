@@ -197,7 +197,7 @@ void doTx()
 {
 	// don't modify realbuf until we're done transmitting
 	// previous data since we're using DMA to TX
-	waitForTx();
+	//waitForTx(); This prevents the unit from transmitting
 
 	// modify our realbuf to the real sequence of bits we need to send
 	convert_bits();
